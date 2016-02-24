@@ -1,0 +1,25 @@
+java -classpath . Driver -b ./testInputs/small_inputs/4.in
+java -classpath . Driver -b ./testInputs/small_inputs/5.in
+java -classpath . Driver -b ./testInputs/small_inputs/6.in
+java -classpath . Driver -b ./testInputs/small_inputs/7.in
+java -classpath . Driver -b ./testInputs/small_inputs/8.in
+java -classpath . Driver -b ./testInputs/small_inputs/9.in
+java -classpath . Driver -b ./testInputs/small_inputs/10.in
+java -classpath . Driver -b ./testInputs/small_inputs/11.in
+java -classpath . Driver -b ./testInputs/large_inputs/160.in
+java -classpath . Driver -b ./testInputs/large_inputs/320.in
+java -classpath . Driver -b ./testInputs/large_inputs/640.in
+java -classpath . Driver -b ./testInputs/large_inputs/1280.in
+
+java -classpath . Driver -g ./testInputs/small_inputs/4.in
+java -classpath . Driver -g ./testInputs/small_inputs/5.in
+java -classpath . Driver -g ./testInputs/small_inputs/6.in
+java -classpath . Driver -g ./testInputs/small_inputs/7.in
+java -classpath . Driver -g ./testInputs/small_inputs/8.in
+java -classpath . Driver -g ./testInputs/small_inputs/9.in
+java -classpath . Driver -g ./testInputs/small_inputs/10.in
+java -classpath . Driver -g ./testInputs/small_inputs/11.in
+java -classpath . Driver -g ./testInputs/large_inputs/160.in
+java -classpath . Driver -g ./testInputs/large_inputs/320.in
+java -classpath . Driver -g ./testInputs/large_inputs/640.in
+java -classpath . Driver -g ./testInputs/large_inputs/1280.in
