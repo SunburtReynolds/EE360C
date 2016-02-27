@@ -1,6 +1,6 @@
 /*
-* Name: <your name>
-* EID: <your EID>
+* Name: Jonathon Reynolds
+* EID: jar6493
 */
 
 import java.util.Arrays;
@@ -73,10 +73,6 @@ public class Program1 extends AbstractProgram1 {
                         if (currentTenantRank < matchedTenantRank) {
                             /* both the tenant prefers apartment and the owner of apartment prefers tenant above their
                             * respective rankings */
-
-                            // System.out.println("Failing " + tenantMatching + " because: ");
-                            // System.out.println("Tenant " + tenant + " prefers apartment " + apartment + " (" + newAptRank + ") over " + matchedApt + " (" + matchedAptRank + ")");
-                            // System.out.println("Apartment " + apartment + " prefers tenant " + tenant + " (" + currentTenantRank + ") over " + matchedTenant + " (" + matchedTenantRank + ")");
                             return false;
                         }
                     }
@@ -192,7 +188,6 @@ public class Program1 extends AbstractProgram1 {
          * if there is a unique ranking for every apartment for this tenant, then each linked list will
          * have a length of one
          */
-        // private LinkedList<Apartment>[] prefList;
         private ArrayList<LinkedList<Apartment>> prefList;
         private Integer next = 0;
 
