@@ -59,6 +59,8 @@ public class Program2 extends VertexNetwork {
                 adjList.add(edge);
             }
         }
+
+        adjList.print();
     }
 
     public ArrayList<Vertex> gpsrPath(int sourceIndex, int sinkIndex) {
