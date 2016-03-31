@@ -1,0 +1,26 @@
+1. 80_80_100.in 
+
+- It is a test case with 80 nodes. 
+- x and y ranges are from 0 to 80.
+- Latency range is from 0 to 100.
+
+The first line of this file has those information above (80 80 100).
+And it shows coordinates of 80 nodes, followed by the list of latencies for all possible edges.
+
+2. output_gpsr (transmission range = 10-meter)
+
+- It has the result of our code for GPSR with t = 10.
+- The result shows possible paths, successful rate and running time.
+- Having different result should be rare as the test nodes has Real number for x,y (not Integer).
+
+3. output_dijLat (transmission range = 10-meter)
+
+- It has the result of our code for Dijkstra-latency with t = 10.
+- The result shows possible paths, successful rate and running time.
+- Having different result should be rare as the test nodes has Real number for x,y (not Integer).
+
+4. output_dijHops (transmission range = 10-meter)
+
+- It has the result of our code for Dijkstra-Hops with t = 10.
+- The result shows successful rate and running time.
+- Having different result should be rare as the test nodes has Real number for x,y (not Integer).

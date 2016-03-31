@@ -156,7 +156,6 @@ public class Program1 extends AbstractProgram1 {
                 /* otherwise, see which tenant the apartment prefers */
                 Integer currentTenantId = matching[apartment.id];
                 Tenant currentTenant = tenants.get(currentTenantId);
-                if (currentTenantId != currentTenant.id) { System.out.println("FUUUUUCK"); }
                 /* if the apartment strictly prefers lonelyTenant, engage lonelyTenant and apartment in matching, and add apartment's old tenant to the free list */
                 if (apartment.striclyPrefersFirstOverSecond(lonelyTenant, currentTenant)) {
                     matching[apartment.id] = lonelyTenant.id;

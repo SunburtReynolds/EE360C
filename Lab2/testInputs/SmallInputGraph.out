@@ -1,0 +1,48 @@
+---------------------------
+Results for the input graph
+---------------------------
+
+Transmission Range = 1.0 meters.
+
+Paths between all pairs of vertices using the GPSR algorithm:
+I = 0 J = 1 : []
+I = 0 J = 2 : []
+I = 0 J = 3 : []
+I = 0 J = 4 : [(1.6484,1.5942), (1.6041,0.9488)]
+I = 1 J = 2 : []
+I = 1 J = 3 : []
+I = 1 J = 4 : []
+I = 2 J = 3 : []
+I = 2 J = 4 : []
+I = 3 J = 4 : []
+The GPSR algorithm is successful 1/10 times.
+The average time taken by the GPSR algorithm on successful runs is 32320 nanoseconds.
+
+Paths between all pairs of vertices using Dijkstra's algorithm (Min Latency):
+I = 0 J = 1 : []
+I = 0 J = 2 : []
+I = 0 J = 3 : []
+I = 0 J = 4 : [(1.6484,1.5942), (1.6041,0.9488)]
+I = 1 J = 2 : []
+I = 1 J = 3 : []
+I = 1 J = 4 : []
+I = 2 J = 3 : []
+I = 2 J = 4 : []
+I = 3 J = 4 : []
+Dijkstra's algorithm (Min Latency) is successful 1/10 times.
+The average time taken by Dijkstra's algorithm (Min Latency) on successful runs is 131216 nanoseconds.
+
+Paths between all pairs of vertices using Dijkstra's algorithm (Min Hops):
+I = 0 J = 1 : []
+I = 0 J = 2 : []
+I = 0 J = 3 : []
+I = 0 J = 4 : [(1.6484,1.5942), (1.6041,0.9488)]
+I = 1 J = 2 : []
+I = 1 J = 3 : []
+I = 1 J = 4 : []
+I = 2 J = 3 : []
+I = 2 J = 4 : []
+I = 3 J = 4 : []
+Dijkstra's algorithm (Min Hops) is successful 1/10 times.
+The average time taken by Dijkstra's algorithm (Min Hops) on successful runs is 53595 nanoseconds.
+

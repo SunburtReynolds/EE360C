@@ -1,17 +1,25 @@
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class Driver {
     public static String filename;
     public static boolean testBruteForce;
     public static boolean testGS;
-    
+
     public static void main(String[] args) throws Exception {
         parseArgs(args);
-        
+
         Matching problem = parseMatchingProblem(filename);
+
+        long startTime = System.nanoTime();
         testRun(problem);
+        long endTime = System.nanoTime();
+
+        long diff = endTime - startTime;
+        diff = TimeUnit.NANOSECONDS.toMillis(diff);
+        System.out.println("Execution time: " + diff + "ms");
     }
 
     private static void usage() {
@@ -20,17 +28,17 @@ public class Driver {
         System.err.println("\t-g\tTest Gale-Shapley implementation");
         System.exit(1);
     }
-    
+
     public static void parseArgs(String[] args) {
         if (args.length == 0) {
             usage();
         }
-        
+
         filename = "";
         testBruteForce = false;
         testGS = false;
         boolean flagsPresent = false;
-        
+
         for (String s : args) {
             if(s.equals("-g")) {
                 flagsPresent = true;
@@ -45,7 +53,7 @@ public class Driver {
                 usage();
             }
         }
-        
+
         if(!flagsPresent) {
             testBruteForce = true;
             testGS = true;
@@ -63,19 +71,19 @@ public class Driver {
 
         l = Integer.parseInt(inputSizes[0]);
         n = Integer.parseInt(inputSizes[1]);
-        
+
         landlordOwn = readPreferenceLists(sc, l);
         landlordPrefs = readPreferenceLists(sc, l);
         tenantPrefs = readPreferenceLists(sc, n);
 
         Matching problem = new Matching(l, n, landlordOwn, landlordPrefs,
         		tenantPrefs);
-                
+
 
         return problem;
     }
 
-    
+
     private static ArrayList<ArrayList<Integer>> readPreferenceLists(
             Scanner sc, int m) {
         ArrayList<ArrayList<Integer>> preferenceLists;
