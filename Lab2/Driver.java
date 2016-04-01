@@ -34,9 +34,9 @@ public class Driver {
             System.out.println("Transmission Range = " + transmissionRange.get(r) + " meters.");
             System.out.println("");
             network.setTransmissionRange(transmissionRange.get(r));
-            network.gpsrAllPairs(false);
-            network.dijkstraLatencyAllPairs(false);
-            network.dijkstraHopsAllPairs(false);
+            network.gpsrAllPairs(true);
+            network.dijkstraLatencyAllPairs(true);
+            network.dijkstraHopsAllPairs(true);
         }
     }
     

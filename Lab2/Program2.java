@@ -5,6 +5,7 @@
 
 import java.util.ArrayList;
 import java.util.ListIterator;
+import java.util.PriorityQueue;
 
 /* Your solution goes in this file.
  *
@@ -142,7 +143,7 @@ public class Program2 extends VertexNetwork {
         /* The following code is meant to be a placeholder that simply 
            returns an empty path. Replace it with your own code that 
                implements Dijkstra's algorithm. */
-        return new ArrayList<Vertex>(0);
+        return dijkstra(sourceIndex, sinkIndex, false);
     }
 
     public ArrayList<Vertex> dijkstraPathHops(int sourceIndex, int sinkIndex) {
@@ -152,8 +153,106 @@ public class Program2 extends VertexNetwork {
         /* The following code is meant to be a placeholder that simply 
            returns an empty path. Replace it with your own code that 
                implements Dijkstra's algorithm. */
-        return new ArrayList<Vertex>(0);
+        return dijkstra(sourceIndex, sinkIndex, true);
     }
 
+    private ArrayList<Vertex> dijkstra(int sourceIndex, int sinkIndex, Boolean withHops) {
+        // initialize all nodes
+        ArrayList<Node> nodes = adjList.getNodes();
+        for (Node n : nodes) {
+            n.setDistance(Double.MAX_VALUE);
+            n.setPrevious(null);
+            n.setVisited(false);
+        }
+
+        // set distance from source to source as 0
+        Node source = nodes.get(sourceIndex);
+        source.setDistance(0);
+
+        // add all nodes to the priority queue
+        PriorityQueue<Node> q = new PriorityQueue<Node>(location.size(), new NodeComparator());
+        for (Node n : nodes) {
+            q.add(n);
+        }
+
+        // System.out.println("Looking for path from " + sourceIndex + " to " + sinkIndex);
+        Boolean failed = false;
+        while (q.size() > 0) {
+            // get node with lowest distance to source, remove it from queue, and mark it visited
+            Node nodeU = q.poll();
+            // System.out.println("Centered at node " + nodeU.getIndex());
+            nodeU.setVisited(true);
+
+            // the algo has failed if the node at the top of the queue has a distance of infinity
+            if (nodeU.getDistance() == Double.MAX_VALUE) {
+                // System.out.println("Top of the queue is unreachable node.");
+                failed = true;
+                break;
+            }
+
+            // the algo has finished if the node at the top of the queue is the sink
+            if (nodeU.getIndex() == sinkIndex) {
+                // System.out.println("Found the sink.");
+                break;
+            }
+
+            // for each neighbor that hasn't been visited, update distances
+            ListIterator<Data> li = adjList.getNeighbors(nodeU.getIndex());
+            while (li.hasNext()) {
+                Data d = li.next();
+                Node nodeV = d.getNode();
+                // System.out.println("Inspecting neighbor node " + nodeV.getIndex());
+
+                if (!nodeV.getVisited()) {
+                    // System.out.println(nodeV.getIndex() + " has not been visited.");
+                    // use a weight of 1.0 if this is dijkstra with Hops instead of Latency
+                    double weight = withHops ? 1.0 : d.getWeight();
+                    double alt = nodeU.getDistance() + weight;
+                    // System.out.println("Current distance " + nodeV.getDistance());
+                    // System.out.println("Alt distance " + alt);
+                    if (alt < nodeV.getDistance()) { // if the path to nodeV is shorter through nodeU, change distance and previous on nodeV
+                        nodeV.setDistance(alt);
+                        nodeV.setPrevious(nodeU);
+
+                        // must update priority queue by removing and inserting updated nodeV
+                        q.remove(nodeV);
+                        q.add(nodeV);
+                    }
+                }
+            }
+        }
+
+        if (failed) {
+            return new ArrayList<Vertex>(0);
+        }
+
+        ArrayList<Node> reverseResult = new ArrayList<Node>();
+        ArrayList<Vertex> result = new ArrayList<Vertex>();
+
+        // if sink is the source, then add vertex twice and return
+        if (sinkIndex == sourceIndex) {
+            result.add(location.get(sourceIndex));
+            result.add(location.get(sourceIndex));
+            return result;
+        }
+
+        // walk through the shortest path from sink to source (backward) using previous pointer
+        Node currentNode = nodes.get(sinkIndex);
+        while (currentNode.getPrevious() != null) {
+            reverseResult.add(currentNode);
+            currentNode = currentNode.getPrevious();
+        }
+        // add on last node
+        reverseResult.add(currentNode);
+
+        // flip order to match requirements
+        for (int i = reverseResult.size() - 1; i >= 0; i--) {
+            Node n = reverseResult.get(i);
+            Vertex v = location.get(n.getIndex());
+            result.add(v);
+        }
+
+        return result;
+    }
 }
 

@@ -46,8 +46,8 @@ public class Node {
         previous = p;
     }
 
-    public void setVisited() {
-        visited = true;
+    public void setVisited(Boolean v) {
+        visited = v;
     }
 
 }
