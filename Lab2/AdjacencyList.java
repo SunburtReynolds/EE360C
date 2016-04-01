@@ -23,18 +23,17 @@ public class AdjacencyList {
     public void add(Edge e) {
         int u = e.getU();
         int v = e.getV();
-        double latency = e.getW();
+        double weight = e.getW();
 
-        adjList.get(u).add(new Data(v, latency));
-        adjList.get(v).add(new Data(u, latency));
+        Node nodeU = new Node(u);
+        Node nodeV = new Node(v);
+
+        adjList.get(u).add(new Data(nodeV, weight));
+        adjList.get(v).add(new Data(nodeU, weight));
     }
 
-    // public LinkedList<Data>getEdges(int u) {
-    //     return adjList.get(u);
-    // }
-
-    public ListIterator<Data> getEdges(int fromNode) {
-        return adjList.get(fromNode).listIterator();
+    public ListIterator<Data> getNeighbors(int fromIndex) {
+        return adjList.get(fromIndex).listIterator();
     }
 
     public void print() {
@@ -45,7 +44,7 @@ public class AdjacencyList {
             System.out.println("LinkedList for " + i);
             while (li.hasNext()) {
                 Data d = li.next();
-                System.out.print("(" + d.getNext() + ", " + d.getLatency() + ") -> ");
+                System.out.print("(" + d.getNode().getIndex() + ", " + d.getWeight() + ") -> ");
             }
             System.out.println("");
         }

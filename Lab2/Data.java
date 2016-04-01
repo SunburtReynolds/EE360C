@@ -5,33 +5,35 @@
  */
 
 public class Data {
-    private int next;
-    private double latency;
-    private int weight;
-    // private Boolean explored;
+    // private int next;
+    // private double latency;
+    private double weight;
+    private Node node;
 
-    public Data(int next, double latency) {
-        this(next, latency, 0);
-    }
-
-    public Data(int next, double latency, int weight) {
-        this.next = next;
-        this.latency = latency;
+    public Data(Node node, double weight) {
+        // this(next, latency, 0);
+        this.node = node;
         this.weight = weight;
-        // this.explored = false;
     }
 
-    public int getWeight() {
+    // public Data(int next, double latency, int weight) {
+    //     this.next = next;
+    //     this.latency = latency;
+    //     this.weight = weight;
+    //     // this.explored = false;
+    // }
+
+    public double getWeight() {
         return this.weight;
     }
 
-    public int getNext() {
-        return this.next;
+    public Node getNode() {
+        return this.node;
     } 
 
-    public double getLatency() {
-        return this.latency;
-    }
+    // public double getLatency() {
+    //     return this.latency;
+    // }
 
     // public Boolean isExplored() {
     //     return this.explored;

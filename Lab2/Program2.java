@@ -96,13 +96,13 @@ public class Program2 extends VertexNetwork {
         Boolean keepGoing = true;
         while (keepGoing) { // continue looping until inner loop has explored all nodes
             Boolean foundCloser = false;
-            ListIterator<Data> edges = adjList.getEdges(closestIndex);
+            ListIterator<Data> neighbors = adjList.getNeighbors(closestIndex);
 
             // System.out.println("Looking for node closer to sink from " + closestIndex);
 
-            while (edges.hasNext()) {
-                Data d = edges.next();
-                int nextIndex = d.getNext();
+            while (neighbors.hasNext()) {
+                Data d = neighbors.next();
+                int nextIndex = d.getNode().getIndex();
                 // System.out.println("Exploring edge to " + nextIndex);
                 Vertex nextVertex = location.get(nextIndex);
                 if (nextVertex.distance(sink) < closestDistance) {
