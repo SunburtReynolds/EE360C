@@ -8,6 +8,7 @@ public class Data {
     private int next;
     private double latency;
     private int weight;
+    // private Boolean explored;
 
     public Data(int next, double latency) {
         this(next, latency, 0);
@@ -17,6 +18,7 @@ public class Data {
         this.next = next;
         this.latency = latency;
         this.weight = weight;
+        // this.explored = false;
     }
 
     public int getWeight() {
@@ -30,4 +32,12 @@ public class Data {
     public double getLatency() {
         return this.latency;
     }
+
+    // public Boolean isExplored() {
+    //     return this.explored;
+    // }
+
+    // public void explore() {
+    //     this.explored = true;
+    // }
 }

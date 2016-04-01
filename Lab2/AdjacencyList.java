@@ -29,8 +29,12 @@ public class AdjacencyList {
         adjList.get(v).add(new Data(u, latency));
     }
 
-    public LinkedList<Data>getEdges(int u) {
-        return adjList.get(u);
+    // public LinkedList<Data>getEdges(int u) {
+    //     return adjList.get(u);
+    // }
+
+    public ListIterator<Data> getEdges(int fromNode) {
+        return adjList.get(fromNode).listIterator();
     }
 
     public void print() {
