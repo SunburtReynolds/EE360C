@@ -10,13 +10,18 @@ import java.util.ListIterator;
 
 public class AdjacencyList {
     private ArrayList<LinkedList<Data>> adjList;
+    private ArrayList<Node> nodes;
 
     public AdjacencyList(int numVertices) {
         this.adjList = new ArrayList<LinkedList<Data>>();
+        this.nodes = new ArrayList<Node>();
 
-        // initialize all internal lists
         for (int i = 0; i < numVertices; i++) {
-           adjList.add(new LinkedList<Data>());
+            // initialize all internal lists
+            adjList.add(new LinkedList<Data>());
+
+            // create list of nodes
+            nodes.add(new Node(i));
         }
     }
 
@@ -25,8 +30,8 @@ public class AdjacencyList {
         int v = e.getV();
         double weight = e.getW();
 
-        Node nodeU = new Node(u);
-        Node nodeV = new Node(v);
+        Node nodeU = nodes.get(u);
+        Node nodeV = nodes.get(v);
 
         adjList.get(u).add(new Data(nodeV, weight));
         adjList.get(v).add(new Data(nodeU, weight));
@@ -34,6 +39,10 @@ public class AdjacencyList {
 
     public ListIterator<Data> getNeighbors(int fromIndex) {
         return adjList.get(fromIndex).listIterator();
+    }
+
+    public ArrayList<Node> getNodes() {
+        return nodes;
     }
 
     public void print() {
